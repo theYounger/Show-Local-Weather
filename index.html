@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show the Local Weather</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+</head>
+<body>
+
+  <script>
+    var ipInfo = $.getJSON('http://ipinfo.io', function loadIpInfo(ipInfo){
+  return ipInfo;
+});
+var coord = ipInfo.loc.split(',');
+console.log(coord);
+
+var weatherData;
+
+  </script>
+</body>
+</html>
