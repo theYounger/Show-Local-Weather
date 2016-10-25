@@ -1,21 +1,15 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Show the Local Weather</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+   <meta charset="UTF-8" />
+   <title>Show the Local Weather</title>
 </head>
 <body>
-
-  <script>
-    var ipInfo = $.getJSON('http://ipinfo.io', function loadIpInfo(ipInfo){
-  return ipInfo;
-});
-var coord = ipInfo.loc.split(',');
-console.log(coord);
-
-var weatherData;
-
-  </script>
+   n<div id="ceiling">
+      <h1 class="header">Local Weather</h1>
+      <h2 class="weather-report">Rainy</h2>
+   </div>
+   <svg height="100" width="100">
+    <path style="fill: none; stroke: black;" d="M 10 10 L 90,10 90,90 z"/>
+   </svg>
 </body>
 </html>

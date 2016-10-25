@@ -1,0 +1,10 @@
+body {
+   display: flex;
+   justify-content: center;
+   background-color: rgb(107,172,191);
+}
+
+svg {
+   background-color: red;
+}
+
