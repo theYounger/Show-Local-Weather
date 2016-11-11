@@ -1,10 +1,16 @@
 body {
-   display: flex;
-   justify-content: center;
-   background-color: rgb(107,172,191);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-svg {
-   background-color: red;
+#weather-feed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+  border: solid black;
+  border-radius: 50%;
 }
-
