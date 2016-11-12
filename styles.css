@@ -1,25 +1,33 @@
 body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: rgb(151, 184, 177);
 }
 
-/* html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-} */
-
 #weather-feed {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 400px;
-  height: 400px;
+  $size;
   border: solid black;
   border-radius: 50%;
   background-color: rgb(132,84,82);
+}
+
+#btn-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  background-color: rgb(132,84,82);
+}
+
+#btn-box > div {
+  margin-top: 5px;
+  height: 12%;
+  width: 25%;
+  background-color: rgb(151, 184, 177);
 }

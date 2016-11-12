@@ -1,41 +1,40 @@
-$(document).ready(function() {
-  // function draw() {
-  //   var ctx = (a canvas context);
-  //   ctx.canvas.width = window.innerWidth;
-  //   ctx.canvas.height = window.innerHeight;
-  // }
+function getIpInfo (done) {
+  $.get("http://ipinfo.io", function successIp(ipInfo) {
+    var ipCoord = ipInfo.loc.split(",");
+    done(ipCoord);
+  }, "jsonp");
+}
 
-  // var canvas = $("#canvas");
-  // console.log(canvas);
-  // var ctx = canvas.getContext("2d");
-  // // ctx.fillStyle = "green";
-  // // ctx.fillRect(10, 10, 100, 100);
-  // console.log(ctx);
+function getWeather(done, msg) {
+  function successWeather(data) {
+    var weather = {};
+    weather.city = data.name;
+    weather.country = data.sys.country;
+    weather.temp = Math.round(data.main.temp);
+    weather.conditions = data.weather[0].main;
+    weather.iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    done(weather);
+  }
+  var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + msg[0] + "&lon=" + msg[1] + "&units=imperial&appid=5988ce438f59f323b9dae89d30886c85";
+
+  $.get(url, successWeather, "jsonp")
+}
+function updateFeed(msg) {
+  $("#weather-feed > h2").html(msg.city + ", " + msg.country);
+  $("#weather-feed > h3").html(msg.temp + String.fromCharCode(176)  + " and " + msg.conditions)
+  .append("<img src=" + msg.iconUrl + " >");
+}
+
+function preweather(coord) {
+  ASQ(coord)
+    .then(getWeather)
+    .val(updateFeed);
+}
+// function checkWeatherCode
+
+// $(document).ready(function() {
 //   ASQ()
-//   .then(function getIpInfo (done) {
-//     $.get("http://ipinfo.io", function successIp(ipInfo) {
-//       var coord = ipInfo.loc.split(",");
-//       coord[0] = Math.floor(coord[0]);
-//       coord[1] = Math.floor(coord[1]);
-//       done(coord);
-//     }, "jsonp");
-//   })
-//   .then(function getWeatherInfo(done, msg) {
-//     var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + msg[0] + "&lon=" + msg[1] + "&units=imperial&appid=5988ce438f59f323b9dae89d30886c85";
-//     $.get(url, function successWeather(weatherInfo) {
-//       done(weatherInfo);
-//     }, "jsonp")
-//   })
-//   .then(function(done, msg) {
-//     var weatherFeed = {};
-
-//     weatherFeed.city = msg.name;
-//     weatherFeed.country = msg.sys.country;
-//     weatherFeed.temp = msg.main.temp;
-//     weatherFeed.conditions = msg.weather[0].main;
-//     weatherFeed.iconUrl = "http://openweathermap.org/img/w/" + msg.weather[0].icon + ".png";
-//     $("#weather-feed > h2").html(weatherFeed.city + ", " + weatherFeed.country);
-//     $("#weather-feed > h3").html(weatherFeed.temp + " and " + weatherFeed.conditions)
-//     .append("<img src=" + weatherFeed.iconUrl + " >");
-//   });
-});
+//   .then(getIpInfo)
+//   .then(getWeather)
+//   .val(updateFeed);
+// });
