@@ -1,19 +1,32 @@
 body {
   display: flex;
+  font-family: Open Sans;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgb(151, 184, 177);
+  background-color: rgb(132,84,82);
 }
+
 
 #weather-feed {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  $size;
-  border: solid black;
-  border-radius: 50%;
+  border: 1px solid grey;
   background-color: rgb(132,84,82);
+}
+
+#weather-feed > h1 {
+  margin: 20px 100px;
+}
+
+#weather-feed > p {
+  font-size: 20px;
+}
+
+#location {
+  font-size: 150%;
+  font-weight: bold;
 }
 
 #btn-box {
@@ -30,4 +43,12 @@ body {
   height: 12%;
   width: 25%;
   background-color: rgb(151, 184, 177);
+}
+
+#fahrenheit {
+  color: blue;
+}
+
+#celsius {
+  color: red;
 }

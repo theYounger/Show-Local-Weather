@@ -19,10 +19,10 @@ function getWeather(done, msg) {
 
   $.get(url, successWeather, "jsonp")
 }
+
 function updateFeed(msg) {
   $("#weather-feed > h2").html(msg.city + ", " + msg.country);
-  $("#weather-feed > h3").html(msg.temp + String.fromCharCode(176)  + " and " + msg.conditions)
-  .append("<img src=" + msg.iconUrl + " >");
+  $("#weather-feed > h3").html(msg.temp + String.fromCharCode(176)  + " and " + msg.conditions).append("<img src=" + msg.iconUrl + " >");
 }
 
 function preweather(coord) {
@@ -30,8 +30,20 @@ function preweather(coord) {
     .then(getWeather)
     .val(updateFeed);
 }
-// function checkWeatherCode
 
+function convert(msg) {
+  var celsius = (msg.tmp - 32) * (5/9);
+  if(f === true) {
+    $("#weather-feed > h3").html(celsius + String.fromCharCode(176)  + " and " + msg.conditions).append("<img src=" + msg.iconUrl + " >");
+    f = false;
+    c = true;
+  }
+  if(c === true) {
+    $("#weather-feed span").html(msg.tmp + String.fromCharCode(176)  + " and " + msg.conditions);
+  }
+}
+var f = true;
+var c = false;
 // $(document).ready(function() {
 //   ASQ()
 //   .then(getIpInfo)
