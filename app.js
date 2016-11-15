@@ -1,3 +1,5 @@
+require("asynquence");
+
 $(document).ready(function loadApp() {
   function getIpInfo (done) {
     $.get("http://ipinfo.io", function successIp(ipInfo) {
