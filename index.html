@@ -8,9 +8,12 @@
     <h1>Weather App</h1>
     <p>
       <span id="location">City Name</span><br>
-      Weather Conditions <br>
-      <span id="fahrenheit"` onclick="convert()">F</span> | <span id="celsius" onclick="convert()">C</span>
-      Temperature </p>
+      <span id="conditions"> Weather Conditions</span><br>
+      <img id="weather-icon" /> <span id="temp">Temperature</span>
+      <sup>
+        <span id="fahrenheit">°F</span> | <span id="celsius">°C</span>
+      </sup>
+    </p>
   </div>
   <div id="btn-box">
     <div id="honolulu" onclick="preweather([21.30694, -157.858337 ])">Honolulu</div>

@@ -3,10 +3,9 @@ body {
   font-family: Open Sans;
   justify-content: center;
   align-items: center;
-  text-align: center;
+/*   text-align: center; */
   background-color: rgb(132,84,82);
 }
-
 
 #weather-feed {
   display: flex;
@@ -29,6 +28,19 @@ body {
   font-weight: bold;
 }
 
+#temp {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+#fahrenheit {
+  color: blue;
+}
+
+sup:hover {
+  cursor: pointer;
+}
+
 #btn-box {
   display: flex;
   flex-direction: column;
@@ -43,12 +55,4 @@ body {
   height: 12%;
   width: 25%;
   background-color: rgb(151, 184, 177);
-}
-
-#fahrenheit {
-  color: blue;
-}
-
-#celsius {
-  color: red;
 }

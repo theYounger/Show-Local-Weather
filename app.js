@@ -1,52 +1,52 @@
-function getIpInfo (done) {
-  $.get("http://ipinfo.io", function successIp(ipInfo) {
-    var ipCoord = ipInfo.loc.split(",");
-    done(ipCoord);
-  }, "jsonp");
-}
-
-function getWeather(done, msg) {
-  function successWeather(data) {
-    var weather = {};
-    weather.city = data.name;
-    weather.country = data.sys.country;
-    weather.temp = Math.round(data.main.temp);
-    weather.conditions = data.weather[0].main;
-    weather.iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-    done(weather);
+$(document).ready(function loadApp() {
+  function getIpInfo (done) {
+    $.get("http://ipinfo.io", function successIp(ipInfo) {
+      var ipCoord = ipInfo.loc.split(",");
+      done(ipCoord);
+    }, "jsonp");
   }
-  var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + msg[0] + "&lon=" + msg[1] + "&units=imperial&appid=5988ce438f59f323b9dae89d30886c85";
 
-  $.get(url, successWeather, "jsonp")
-}
+  function getWeather(done, msg) {
+    function successWeather(data) {
+      var weather = {};
+      weather.city = data.name;
+      weather.country = data.sys.country;
+      weather.temp = Math.round(data.main.temp);
+      weather.conditions = data.weather[0].main;
+      weather.iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+      done(weather);
+    }
+    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + msg[0] + "&lon=" + msg[1] + "&units=imperial&appid=5988ce438f59f323b9dae89d30886c85";
 
-function updateFeed(msg) {
-  $("#weather-feed > h2").html(msg.city + ", " + msg.country);
-  $("#weather-feed > h3").html(msg.temp + String.fromCharCode(176)  + " and " + msg.conditions).append("<img src=" + msg.iconUrl + " >");
-}
-
-function preweather(coord) {
-  ASQ(coord)
-    .then(getWeather)
-    .val(updateFeed);
-}
-
-function convert(msg) {
-  var celsius = (msg.tmp - 32) * (5/9);
-  if(f === true) {
-    $("#weather-feed > h3").html(celsius + String.fromCharCode(176)  + " and " + msg.conditions).append("<img src=" + msg.iconUrl + " >");
-    f = false;
-    c = true;
+    $.get(url, successWeather, "jsonp")
   }
-  if(c === true) {
-    $("#weather-feed span").html(msg.tmp + String.fromCharCode(176)  + " and " + msg.conditions);
+
+  function updateFeed(msg) {
+    function convertToC() {
+      $("#temp").html(msg.temp + String.fromCharCode(176));
+      $("#fahrenheit").css("color", "blue");
+      $("#celsius").css("color", "black");
+    }
+
+    function convertToF() {
+      var celsius = Math.round((msg.temp - 32) * (5/9));
+      $("#temp").html(celsius + String.fromCharCode(176));
+      $("#fahrenheit").css("color", "black");
+      $("#celsius").css("color", "blue");
+    }
+
+    $("#location").html(msg.city + ", " + msg.country);
+    $("#temp").html(msg.temp + String.fromCharCode(176))
+    $("#weather-icon").attr("src", msg.iconUrl);
+    $("#conditions").html(msg.conditions);
+    $("#fahrenheit").click(convertToC);
+    $("#celsius").click(convertToF);
   }
-}
-var f = true;
-var c = false;
-// $(document).ready(function() {
-//   ASQ()
-//   .then(getIpInfo)
-//   .then(getWeather)
-//   .val(updateFeed);
-// });
+
+  var citiesArr = ["honolulu", "vancouver", "houston", "new-york"]
+
+  ASQ()
+  .then(getIpInfo)
+  .then(getWeather)
+  .val(updateFeed);
+});

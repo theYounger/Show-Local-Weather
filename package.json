@@ -1,0 +1,20 @@
+{
+  "name": "Show_Local_Weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theYounger/Show-Local-Weather.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theYounger/Show-Local-Weather/issues"
+  },
+  "homepage": "https://github.com/theYounger/Show-Local-Weather#readme"
+}
