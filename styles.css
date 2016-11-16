@@ -3,8 +3,7 @@ body {
   font-family: Open Sans;
   justify-content: center;
   align-items: center;
-/*   text-align: center; */
-  background-color: rgb(132,84,82);
+  background-color: rgb(205,232,176);
 }
 
 #weather-feed {
@@ -12,7 +11,7 @@ body {
   flex-direction: column;
   justify-content: center;
   border: 1px solid grey;
-  background-color: rgb(132,84,82);
+  background-color: none;
 }
 
 #weather-feed > h1 {
@@ -45,14 +44,15 @@ sup:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px;
+  width: 300px;
   height: 400px;
-  background-color: rgb(132,84,82);
+  background-color: none;
 }
 
 #btn-box > div {
-  margin-top: 5px;
   height: 12%;
   width: 25%;
-  background-color: rgb(151, 184, 177);
+  margin-top: 5px;
+  border: 1px solid grey;
+  background-color: none;
 }

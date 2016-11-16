@@ -1,5 +1,3 @@
-require("asynquence");
-
 $(document).ready(function loadApp() {
   function getIpInfo (done) {
     $.get("http://ipinfo.io", function successIp(ipInfo) {
@@ -47,8 +45,8 @@ $(document).ready(function loadApp() {
 
   var citiesArr = ["honolulu", "vancouver", "houston", "new-york"]
 
-  ASQ()
-  .then(getIpInfo)
-  .then(getWeather)
-  .val(updateFeed);
+//   ASQ()
+//   .then(getIpInfo)
+//   .then(getWeather)
+//   .val(updateFeed);
 });
