@@ -7,6 +7,7 @@
   }
 
   function getWeather(done, msg) {
+    console.log(msg);
     function successWeather(data) {
       var weather = {};
       weather.city = data.name;
@@ -16,12 +17,14 @@
       weather.iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
       done(weather);
     }
+
     var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + msg[0] + "&lon=" + msg[1] + "&units=imperial&appid=5988ce438f59f323b9dae89d30886c85";
 
     $.get(url, successWeather, "jsonp");
   }
 
   function updateFeed(msg) {
+    console.log(msg);
     function convertToC() {
       $("#temp").html(msg.temp + String.fromCharCode(176));
       $("#fahrenheit").css("color", "blue");
@@ -44,20 +47,18 @@
   }
 
   function fillBtnBox() {
-    var cityInfo = [["honolulu", [21.30694, -157.858337]], ["vancouver", [49.24966, -123.119339]], ["houston", [29.763281, -95.363274]], ["new-york", [40.7146, -74.0071]], ["rio", [-22.9122, -43.175]], ["london", [51.50853,-0.12574]], ["cairo", [30.0499, 31.2486]], ["moscow", [55.75222, 37.615555]], ["new-delhi", [28.631, 77.2173]], ["beijing", [116.397232, 39.907501]], ["hong-kong", [22.4426, 114.032]], ["tokyo", [35.689499, 139.691711]]];
+    var cityInfo = [["Honolulu", ["21.30694", "-157.858337"]], ["Vancouver", ["49.24966", "-123.119339"]], ["Houston", ["29.763281", "-95.363274"]], ["New York", ["40.7146", "-74.0071"]], ["Rio de Janeiro", ["-22.9122", "-43.175"]], ["London", ["51.50853","-0.12574"]], ["Cairo", ["30.0499", "31.2486"]], ["Moscow", ["55.75222", "37.615555"]], ["New Delhi", ["28.631", "77.2173"]], ["Beijing", ["116.397232", "39.907501"]], ["Hong Kong", ["22.4426", "114.032"]], ["Tokyo", ["35.689499", "139.691711"]]];
 
     cityInfo.forEach(function fill(ele) {
-      var btn = $("<div></div>");
-
-      btn
-        .attr("id", ele[0])
-        .onclick(function() {
+      $("<div></div>")
+        .click(function() {
           ASQ(ele[1])
             .then(getWeather)
-            .then(updateFeed)
+            .val(updateFeed)
           ;
-        });
-      $("#btn-box").append(btn);
+        })
+        .html(ele[0])
+        .appendTo("#btn-box");
     });
   }
 
