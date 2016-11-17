@@ -1,4 +1,4 @@
-$(document).ready(function loadApp() {
+ $(document).ready(function loadApp() {
   function getIpInfo (done) {
     $.get("http://ipinfo.io", function successIp(ipInfo) {
       var ipCoord = ipInfo.loc.split(",");
@@ -18,7 +18,7 @@ $(document).ready(function loadApp() {
     }
     var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + msg[0] + "&lon=" + msg[1] + "&units=imperial&appid=5988ce438f59f323b9dae89d30886c85";
 
-    $.get(url, successWeather, "jsonp")
+    $.get(url, successWeather, "jsonp");
   }
 
   function updateFeed(msg) {
@@ -43,10 +43,28 @@ $(document).ready(function loadApp() {
     $("#celsius").click(convertToF);
   }
 
-  var citiesArr = ["honolulu", "vancouver", "houston", "new-york"]
+  function fillBtnBox() {
+    var cityInfo = [["honolulu", [21.30694, -157.858337]], ["vancouver", [49.24966, -123.119339]], ["houston", [29.763281, -95.363274]], ["new-york", [40.7146, -74.0071]], ["rio", [-22.9122, -43.175]], ["london", [51.50853,-0.12574]], ["cairo", [30.0499, 31.2486]], ["moscow", [55.75222, 37.615555]], ["new-delhi", [28.631, 77.2173]], ["beijing", [116.397232, 39.907501]], ["hong-kong", [22.4426, 114.032]], ["tokyo", [35.689499, 139.691711]]];
 
-//   ASQ()
-//   .then(getIpInfo)
-//   .then(getWeather)
-//   .val(updateFeed);
+    cityInfo.forEach(function fill(ele) {
+      var btn = $("<div></div>");
+
+      btn
+        .attr("id", ele[0])
+        .onclick(function() {
+          ASQ(ele[1])
+            .then(getWeather)
+            .then(updateFeed)
+          ;
+        });
+      $("#btn-box").append(btn);
+    });
+  }
+
+  ASQ()
+  .then(getIpInfo)
+  .then(getWeather)
+  .val(updateFeed);
+
+   fillBtnBox();
 });
