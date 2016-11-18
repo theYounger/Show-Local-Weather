@@ -7,7 +7,6 @@
   }
 
   function getWeather(done, msg) {
-    console.log(msg);
     function successWeather(data) {
       var weather = {};
       weather.city = data.name;
@@ -24,7 +23,7 @@
   }
 
   function updateFeed(msg) {
-    console.log(msg);
+
     function convertToC() {
       $("#temp").html(msg.temp + String.fromCharCode(176));
       $("#fahrenheit").css("color", "blue");
