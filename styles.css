@@ -2,41 +2,13 @@
 
 body {
   display: flex;
-  flex-direction: column;
-  font-family: Open Sans;
   justify-content: center;
-  align-items: center;
-  background-color: rgb(205,232,176);
-}
-
-#weather-feed {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: 1px solid grey;
-  background-color: none;
-}
-
-#weather-feed > h1 {
-  margin: 20px 100px;
-}
-
-#weather-feed > p {
-  font-size: 20px;
-}
-
-#location {
-  font-size: 150%;
-  font-weight: bold;
-}
-
-#temp {
-  font-size: 200%;
-  font-weight: bold;
+  background: linear-gradient(#5BD4CD, #B640D5) no-repeat center center fixed;
+  background-size: cover;
 }
 
 #fahrenheit {
-  color: blue;
+  color: #B640D5;
 }
 
 sup:hover {
@@ -46,20 +18,43 @@ sup:hover {
 #easel {
   display: flex;
   justify-content: center;
+  font-family: 'Libre Franklin', sans-serif;
+  font-variant: small-caps;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 200px;
+  color: #14183D;
 }
 
-#titlebar {
-   position: absolute;
-   width: 500px;
-   height: 55px;
-   margin-top: 140px;
-   padding-top: 20px;
-   background-color: #14183D;
-   text-align: center;
-   font-family: 'Libre Franklin', sans-serif;
-   font-size: 30px;
-   color: #E8E3CF;
-   text-shadow: -5px 0px #38183F;
+#easel > p {
+  font-style: italic;
+  position: absolute;
+}
+
+#main-weather {
+  margin-top: 20px;
+}
+
+#temp {
+  font-size: 60px;
+  font-weight: bolder;
+  color: #B640D5;
+}
+
+#weather-icon {
+  position: absolute;
+  margin-top: 250px;
+}
+
+#location {
+  position: absolute;
+  width: 500px;
+  height: 55px;
+  margin-top: 150px;
+  padding-top: 20px;
+  background-color: #14183D;
+  text-shadow: -3px 0px #78281F;
+  color: #E8E3CF;
 }
 
 #btn-box {

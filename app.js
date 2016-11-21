@@ -60,10 +60,10 @@
     });
   })();
 
-  // ASQ()
-  // .then(getIpInfo)
-  // .then(getWeather)
-  // .val(updateFeed);
+  ASQ()
+  .then(getIpInfo)
+  .then(getWeather)
+  .val(updateFeed);
 
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");

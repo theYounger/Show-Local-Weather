@@ -4,20 +4,17 @@
   <title>Weather App</title>
 </head>
 <body>
-  <div id="weather-feed">
-    <h1>Weather App</h1>
-    <p>
-      <span id="location">City Name</span><br>
-      <span id="conditions"> Weather Conditions</span><br>
-      <img id="weather-icon" /> <span id="temp">Temperature</span>
-      <sup>
-        <span id="fahrenheit">°F</span> | <span id="celsius">°C</span>
-      </sup>
-    </p>
-  </div>
 <!--   <div id="btn-box"></div> -->
   <div id="easel">
-    <div id="titlebar">Honolulu, HI</div>
+    <p id="main-weather">
+      <span id="temp">Temperature</span>
+      <sup>
+        <span id="fahrenheit">°F</span> | <span id="celsius">°C</span>
+      </sup><br>
+      <span id="conditions">Weather Conditions</span>
+    </p>
+    <div id="location">Honolulu, HI</div>
+    <img id="weather-icon" width="80" height="80" /><br>
     <canvas id="canvas" width="400" height="400"></canvas>
    </div>
 </body>
