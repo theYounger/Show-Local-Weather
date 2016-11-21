@@ -23,25 +23,25 @@
   }
 
   function updateFeed(msg) {
-    function convertToC() {
+    function convertToF() {
       $("#temp").html(msg.temp + String.fromCharCode(176));
-      $("#fahrenheit").css("color", "blue");
-      $("#celsius").css("color", "black");
+      $("#fahrenheit").css("color", "#B640D5");
+      $("#celsius").css("color", "#14183D");
     }
 
-    function convertToF() {
+    function convertToC() {
       var celsius = Math.round((msg.temp - 32) * (5/9));
       $("#temp").html(celsius + String.fromCharCode(176));
-      $("#fahrenheit").css("color", "black");
-      $("#celsius").css("color", "blue");
+      $("#fahrenheit").css("color", "#14183D");
+      $("#celsius").css("color", "#B640D5");
     }
 
     $("#location").html(msg.city + ", " + msg.country);
     $("#temp").html(msg.temp + String.fromCharCode(176))
     $("#weather-icon").attr("src", msg.iconUrl);
     $("#conditions").html(msg.conditions);
-    $("#fahrenheit").click(convertToC);
-    $("#celsius").click(convertToF);
+    $("#fahrenheit").click(convertToF);
+    $("#celsius").click(convertToC);
   }
 
   (function fillBtnBox() {
@@ -80,18 +80,18 @@
   ctx.beginPath();
   ctx.moveTo(3, 0);
   ctx.lineTo(width - 3, 0);
-  ctx.quadraticCurveTo(width, 0, width - 3, 6)
+  ctx.quadraticCurveTo(width, 0, width - 3, 6);
   ctx.lineTo(width/2 + 3, height - 6);
   ctx.quadraticCurveTo(width/2, height, width/2 - 3, height - 6);
   ctx.lineTo(3, 6);
   ctx.quadraticCurveTo(0, 0, 3, 0);
   ctx.fill();
+  ctx.clip();
 
-   //inner lines of triangle
+  //inner lines of triangle
+  ctx.fillStyle = "silver";
+
   for(var i = 0; i < 100; i++) {
-    var triSlope = height/(width/2);
-    var yCoord = (height/100)*i - 1;
-    ctx.fillRect(yCoord/triSlope, yCoord, width - yCoord, (height/100) * (1/4));
-    ctx.fillStyle = "silver";
+    ctx.fillRect(0, (height/100)*i-1, width, (height/100)*(1/4));
   }
 });
