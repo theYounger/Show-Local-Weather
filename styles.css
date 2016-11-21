@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin');
+
 body {
   display: flex;
   flex-direction: column;
@@ -39,6 +41,25 @@ body {
 
 sup:hover {
   cursor: pointer;
+}
+
+#easel {
+  display: flex;
+  justify-content: center;
+}
+
+#titlebar {
+   position: absolute;
+   width: 500px;
+   height: 55px;
+   margin-top: 140px;
+   padding-top: 20px;
+   background-color: #14183D;
+   text-align: center;
+   font-family: 'Libre Franklin', sans-serif;
+   font-size: 30px;
+   color: #E8E3CF;
+   text-shadow: -5px 0px #38183F;
 }
 
 #btn-box {
