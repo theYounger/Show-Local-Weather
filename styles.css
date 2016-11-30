@@ -20,7 +20,7 @@ sup:hover {
   justify-content: center;
   font-family: 'Libre Franklin', sans-serif;
   font-variant: small-caps;
-  font-size: 30px;
+  font-size: 35px;
   text-align: center;
   margin-top: 200px;
   color: #14183D;
@@ -51,10 +51,11 @@ sup:hover {
   width: 500px;
   height: 55px;
   margin-top: 150px;
-  padding-top: 20px;
+  padding-top: 15px;
   background-color: #14183D;
   text-shadow: -3px 0px #78281F;
   color: #E8E3CF;
+  letter-spacing: 2px;
 }
 
 #btn-box {
